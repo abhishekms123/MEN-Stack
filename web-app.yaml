@@ -24,23 +24,23 @@ spec:
         - containerPort: 8081 #default port of container
         env:                             #extra lines added from secrets to refer env variables of username & Password of mongodb
 
-        - name: ME_CONFIG_MONGODB_ADMINUSERNAME    #environment variable for mongo-express to connect with mongodb visit dockerhub
-        valueFrom:
-          secretKeyRef:
-            name: mongo-secret  #name of metadata
-            key: mongo-user #key used for storing value ie username
+          - name: ME_CONFIG_MONGODB_ADMINUSERNAME    #environment variable for mongo-express to connect with mongodb visit dockerhub
+            valueFrom:
+              secretKeyRef:
+                name: mongo-secret  #name of metadata
+                key: mongo-user #key used for storing value ie username
 
-        - name: ME_CONFIG_MONGODB_ADMINPASSWORD  #environment variable for mongoexpress to connect with mongodb mongo-e password
-              valueFrom:
-                secretKeyRef:
-                  name: mongo-secret  #name of metadata 
-                  key: mongo-password #key used for storing value ie password
+          - name: ME_CONFIG_MONGODB_ADMINPASSWORD  #environment variable for mongoexpress to connect with mongodb mongo-e password
+            valueFrom:
+              secretKeyRef:
+                name: mongo-secret  #name of metadata 
+                key: mongo-password #key used for storing value ie password
 
-        - name: ME_CONFIG_MONGODB_SERVER  #environment variable for mongoexpress to connect with mongodb mongo-e password
-              valueFrom:
-                configMapRef:
-                  name: mongo-config  #name of file
-                  key: mongo-url #key used for storing value ie password          
+          - name: ME_CONFIG_MONGODB_SERVER  #environment variable for mongoexpress to connect with mongodb mongo-e password
+            valueFrom:
+              configMapRef:
+                name: mongo-config  #name of file
+                key: mongo-url #key used for storing value ie password          
 
 
 
