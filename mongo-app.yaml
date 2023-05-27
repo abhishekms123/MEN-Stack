@@ -24,15 +24,15 @@ spec:
         - containerPort: 27017  #default port of container
         env:                             #extra lines added from secrets to refer env variables of username & Password of mongodb
         - name: MONGO_INITDB_ROOT_USERNAME    #environment variable for mongo root username
-              valueFrom:
-                secretKeyRef:
-                  name: mongo-secret  #name of metadata
-                  key: mongo-user #key used for storing value ie username
+          valueFrom:
+          secretKeyRef:
+          name: mongo-secret  #name of metadata
+          key: mongo-user #key used for storing value ie username
         - name: MONGO_INITDB_ROOT_PASSWORD   #environment variable for mongo root password
-              valueFrom:
-                secretKeyRef:
-                  name: mongo-secret  #name of metadata
-                  key: mongo-password #key used for storing value ie password
+          valueFrom:
+          secretKeyRef:
+          name: mongo-secret  #name of metadata
+          key: mongo-password #key used for storing value ie password
 
 ---
 
